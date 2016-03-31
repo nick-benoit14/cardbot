@@ -3,36 +3,54 @@
     <meta name="viewport" content="width=device-width, initial-scale = 1.0,  maximum-scale=1.0,  user-scalable=no">
 
     <style>
+      html,body{margin:0;}
       .input{
-        width:100%;height:100%;display:flex;flex-wrap:wrap;
-        justify-content: space-around;
-         background-color: #021B27;
+        width:100%;
+        height:100%;
+        background-color: #021B27;
       }
-      .input_row{
+      .input_block{
+        padding-top:100px;
+      }
+      .input_block_row{
         display:flex;
         flex-wrap:wrap;
         justify-content: center;
       }
 
-      .input_row_button{
+      .input_block_row_button{
         width:40%;
+        height:20%;
         margin:10px;
         background-color:#021B27;
         border: 3px solid #F5991D;
         border-radius: 25px;
         color:#F5991D;
         font-size:150%;
+        transition: background-color .5s;
+       }
+       .input_block_row_button:hover{
+         background-color:#F5991D;
+         color:#021B27;
        }
 
     </style>
   </head>
   <body>
       <div class="input">
-        <button id="forward" class="input_row_button">Forward</button>
-        <button id="reverse" class="input_row_button">Reverse</button>
-        <button id="left" class="input_row_button">Left</button>
-        <button id="right" class="input_row_button">Right</button>
-      </div>
+        <div class="input_block">
+            <div class="input_block_row">
+              <button id="forward" class="input_block_row_button">Forward</button>
+            </div>
+            <div class="input_block_row">
+              <button id="left" class="input_block_row_button">Left</button>
+              <button id="right" class="input_block_row_button">Right</button>
+            </div>
+            <div class="input_block_row">
+              <button id="reverse" class="input_block_row_button">Reverse</button>
+            </div>
+        </div>
+    </div>
   </body>
   <script>
     const address = "http://localhost";
