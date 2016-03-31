@@ -39,14 +39,14 @@
       <div class='input'>
         <div class='input_block'>
             <div class='input_block_row'>
-              <button id='forwardButton' class='input_block_row_button'>Forward</button>
+              <button id='w' class='input_block_row_button'>Forward</button>
             </div>
             <div class='input_block_row'>
-              <button id='leftButton' class='input_block_row_button'>Left</button>
-              <button id='rightButton' class='input_block_row_button'>Right</button>
+              <button id='a' class='input_block_row_button'>Left</button>
+              <button id='d' class='input_block_row_button'>Right</button>
             </div>
             <div class='input_block_row'>
-              <button id='reverseButton' class='input_block_row_button'>Reverse</button>
+              <button id='s' class='input_block_row_button'>Reverse</button>
             </div>
         </div>
     </div>
@@ -59,14 +59,18 @@
       var oReq = new XMLHttpRequest();
       switch(command){
         case TURN:
+          console.log( address + '/command?turn=' + argument);
           oReq.open('GET', address + '/command?turn=' + argument);
-          alert(command + " : " + argument);
+          // alert(command + " : " + argument);
         break;
       }
+      oReq.addEventListener("load", reqListener);
       oReq.send();
     }
     function reqListener (){
-      console.log(this.responseText);
+      // console.log("Request");
+      // console.log(this.responseText);
+      alert(this.responseText)
     }
     function bindButtonEvents(ids){
       ids.forEach(function(id){
@@ -76,7 +80,7 @@
       });
     }
 
-    bindButtonEvents(['forwardButton', 'reverseButton', 'leftButton', 'rightButton']);
+    bindButtonEvents(['w', 's', 'a', 'd']);
 
     // var oReq = new XMLHttpRequest();
     // oReq.addEventListener('load', reqListener);
