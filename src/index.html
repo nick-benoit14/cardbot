@@ -1,7 +1,6 @@
 <html>
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale = 1.0,  maximum-scale=1.0,  user-scalable=no">
-
+    <meta name='viewport' content='width=device-width, initial-scale = 1.0,  maximum-scale=1.0,  user-scalable=no'>
     <style>
       html,body{margin:0;}
       .input{
@@ -37,44 +36,50 @@
     </style>
   </head>
   <body>
-      <div class="input">
-        <div class="input_block">
-            <div class="input_block_row">
-              <button id="forward" class="input_block_row_button">Forward</button>
+      <div class='input'>
+        <div class='input_block'>
+            <div class='input_block_row'>
+              <button id='forward' class='input_block_row_button'>Forward</button>
             </div>
-            <div class="input_block_row">
-              <button id="left" class="input_block_row_button">Left</button>
-              <button id="right" class="input_block_row_button">Right</button>
+            <div class='input_block_row'>
+              <button id='left' class='input_block_row_button'>Left</button>
+              <button id='right' class='input_block_row_button'>Right</button>
             </div>
-            <div class="input_block_row">
-              <button id="reverse" class="input_block_row_button">Reverse</button>
+            <div class='input_block_row'>
+              <button id='reverse' class='input_block_row_button'>Reverse</button>
             </div>
         </div>
     </div>
   </body>
   <script>
-    const address = "http://localhost";
-    const TURN = "TURN";
+    const address = 'http://localhost';
+    const TURN = 'TURN';
 
     function sendCommand(command, direction){
       var oReq = new XMLHttpRequest();
       switch(command){
         case TURN:
-          oReq.open("GET", address + "/command?turn=" + direction);
+          oReq.open('GET', address + '/command?turn=' + direction);
         break;
       }
       oReq.send();
     }
-    function reqListener () {
+    function reqListener (){
       console.log(this.responseText);
     }
-    function bindButtonEvents(){}
+    function bindButtonEvents(ids){
+      ids.foreach(function(id){
+        document.getElementById(id).addEventListener('click', function(){
+          sendCommand('TURN', id);
+        })
+      });
+    }
 
     // var oReq = new XMLHttpRequest();
-    // oReq.addEventListener("load", reqListener);
-    // oReq.open("GET", "http://www.example.org/example.txt");
+    // oReq.addEventListener('load', reqListener);
+    // oReq.open('GET', 'http://www.example.org/example.txt');
     // oReq.send();
 
-    sendCommand("TURN", "w");
+    // sendCommand('TURN', 'w');
   </script>
 </html>
