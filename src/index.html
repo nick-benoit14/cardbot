@@ -39,14 +39,14 @@
       <div class='input'>
         <div class='input_block'>
             <div class='input_block_row'>
-              <button id='forward' class='input_block_row_button'>Forward</button>
+              <button id='forwardButton' class='input_block_row_button'>Forward</button>
             </div>
             <div class='input_block_row'>
-              <button id='left' class='input_block_row_button'>Left</button>
-              <button id='right' class='input_block_row_button'>Right</button>
+              <button id='leftButton' class='input_block_row_button'>Left</button>
+              <button id='rightButton' class='input_block_row_button'>Right</button>
             </div>
             <div class='input_block_row'>
-              <button id='reverse' class='input_block_row_button'>Reverse</button>
+              <button id='reverseButton' class='input_block_row_button'>Reverse</button>
             </div>
         </div>
     </div>
@@ -69,14 +69,14 @@
       console.log(this.responseText);
     }
     function bindButtonEvents(ids){
-      ids.foreach(function(id){
+      ids.forEach(function(id){
         document.getElementById(id).addEventListener('click', function(){
           sendCommand('TURN', id);
         })
       });
     }
 
-    bindButtonEvents();
+    bindButtonEvents(['forwardButton', 'reverseButton', 'leftButton', 'rightButton']);
 
     // var oReq = new XMLHttpRequest();
     // oReq.addEventListener('load', reqListener);
