@@ -55,11 +55,12 @@
     const address = 'http://192.168.4.1';
     const TURN = 'TURN';
 
-    function sendCommand(command, direction){
+    function sendCommand(command, argument){
       var oReq = new XMLHttpRequest();
       switch(command){
         case TURN:
-          oReq.open('GET', address + '/command?turn=' + direction);
+          oReq.open('GET', address + '/command?turn=' + argument);
+          alert(command + " : " + argument);
         break;
       }
       oReq.send();
@@ -74,6 +75,8 @@
         })
       });
     }
+
+    bindButtonEvents();
 
     // var oReq = new XMLHttpRequest();
     // oReq.addEventListener('load', reqListener);
